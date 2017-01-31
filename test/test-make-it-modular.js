@@ -18,20 +18,21 @@ describe('when valid file path and type is provided as argument', function () {
         console.log(error);
       }
       assert.deepEqual(arrayOfFiles, resultArray);
+      done();
     });
-    done();
+
   });
   it('should return empty if no files of given type are there in the given directory which has some files of other types', function (done) {
     var validDirectory = '/Users/aritraaritra/Documents/learnyounode';
-    var validFileType = 'txt'
+    var validFileType = 'exe'
     var arrayOfFiles = [];
     filterLs(validDirectory, validFileType, (error, resultArray) => {
       if (error) {
         console.log(error);
       }
       assert.deepEqual(arrayOfFiles, resultArray);
+      done();
     });
-    done();
   });
   it('should return empty if the given directory is empty', function (done) {
     var validDirectory = '/Users/aritraaritra/Documents/learnyounode/empty-directory';
@@ -42,8 +43,8 @@ describe('when valid file path and type is provided as argument', function () {
         console.log(error);
       }
       assert.deepEqual(arrayOfFiles, resultArray);
+      done();
     });
-    done();
   });
 });
 
@@ -51,20 +52,15 @@ describe('when invalid file path or file type and type is provided as argument',
   it('should return an error message with proper details', function (done) {
     var invalidDirectory = '/Users/aritraaritra/Documents/learnyounode/asdsa';
     var fileType = 'filetype';
-    var errorMessage = {
-      Error: `ENOENT: no such file or directory, scandir ${invalidDirectory}`,
-      errno: -2,
-      code: 'ENOENT',
-      syscall: 'scandir',
-      path: `${invalidDirectory}`
-    };
+    var errorMessage = `ENOENT`;
     filterLs(invalidDirectory, fileType, (error, resultArray) => {
       if (error) {
-        assert.deepEqual(errorMessage, error);
+        assert.deepEqual(errorMessage, error.code);
       }
+      done();
     });
-    done();
   });
+
   it('should return an error message when the file path is undefined', function (done) {
     var undefinedDirectory = undefined;
     var fileType = undefined;
@@ -73,10 +69,11 @@ describe('when invalid file path or file type and type is provided as argument',
       if (error) {
         assert.deepEqual(errorMessage, error);
       }
+      done();
     });
-    done();
   });
-    it('should return an error message when the file path is valid and file type is undefined', function (done) {
+
+  it('should return an error message when the file path is valid and file type is undefined', function (done) {
     var validDirectory = './';
     var fileType = undefined;
     var errorMessage = 'Please enter a valid file type.';
@@ -84,7 +81,7 @@ describe('when invalid file path or file type and type is provided as argument',
       if (error) {
         assert.deepEqual(errorMessage, error);
       }
+      done();
     });
-    done();
   });
 });

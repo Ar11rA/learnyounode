@@ -4,7 +4,7 @@ function asyncFilterLs(inputPath, fileType, callback) {
   var result = [];
   if (inputPath === undefined) {
     callback('Please enter a valid path.');
-      return;
+    return;
   }
   if (fileType === undefined) {
     callback('Please enter a valid file type.');
@@ -21,6 +21,5 @@ function asyncFilterLs(inputPath, fileType, callback) {
     });
     return callback(null, result);
   });
-
 }
 module.exports = asyncFilterLs;
