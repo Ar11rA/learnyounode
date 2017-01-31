@@ -14,9 +14,6 @@ describe('when valid file path and type is provided as argument', function () {
     var resultArray = [];
     var isEqual;
     filterLs(validDirectory, validFileType, (error, resultArray) => {
-      if (error) {
-        console.log(error);
-      }
       assert.deepEqual(arrayOfFiles, resultArray);
       done();
     });
@@ -27,9 +24,6 @@ describe('when valid file path and type is provided as argument', function () {
     var validFileType = 'exe'
     var arrayOfFiles = [];
     filterLs(validDirectory, validFileType, (error, resultArray) => {
-      if (error) {
-        console.log(error);
-      }
       assert.deepEqual(arrayOfFiles, resultArray);
       done();
     });
@@ -39,9 +33,6 @@ describe('when valid file path and type is provided as argument', function () {
     var validFileType = 'txt'
     var arrayOfFiles = [];
     filterLs(validDirectory, validFileType, (error, resultArray) => {
-      if (error) {
-        console.log(error);
-      }
       assert.deepEqual(arrayOfFiles, resultArray);
       done();
     });
