@@ -2,6 +2,7 @@ var filesPath = process.argv[2];
 var fileType = process.argv[3];
 var fs = require('fs');
 var path = require('path');
+
 if (filesPath === undefined) {
   console.log('Please enter a valid path.');
   return;

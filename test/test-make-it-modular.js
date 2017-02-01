@@ -39,11 +39,11 @@ describe('when valid file path and type is provided as argument', function () {
   });
 });
 
-describe('when invalid file path or file type and type is provided as argument', function () {
-  it('should return an error message with proper details', function (done) {
+describe('when invalid file path or file type is provided as argument', function () {
+  it('should return an error message with proper details when directory cannot be found', function (done) {
     var invalidDirectory = '/Users/aritraaritra/Documents/learnyounode/asdsa';
     var fileType = 'filetype';
-    var errorMessage = `ENOENT`;
+    var errorMessage = 'ENOENT';
     filterLs(invalidDirectory, fileType, (error, resultArray) => {
       if (error) {
         assert.deepEqual(errorMessage, error.code);
@@ -64,7 +64,7 @@ describe('when invalid file path or file type and type is provided as argument',
     });
   });
 
-  it('should return an error message when the file path is valid and file type is undefined', function (done) {
+  it('should return an error message when the file path is valid but the file type is undefined', function (done) {
     var validDirectory = './';
     var fileType = undefined;
     var errorMessage = 'Please enter a valid file type.';

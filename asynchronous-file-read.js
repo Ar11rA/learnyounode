@@ -4,4 +4,5 @@ fs.readFile(filePath, 'utf8', (err, data) => {
   if (err)
     console.log(err);
   console.log(data.toString().split('\n').length - 1)
+
 });
